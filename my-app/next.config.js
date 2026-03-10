@@ -1,11 +1,11 @@
-// next.config.js
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  outputFileTracingRoot: __dirname,
   eslint: {
-    ignoreDuringBuilds: true,   // ✅ skip lint errors in production
+    ignoreDuringBuilds: true,
   },
   typescript: {
-    ignoreBuildErrors: true,    // ✅ skip type errors in production
+    ignoreBuildErrors: true,
   },
 };
 
