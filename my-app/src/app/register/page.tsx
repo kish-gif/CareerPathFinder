@@ -5,8 +5,10 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { useAuth } from "@/hooks/useAuth";
 import { toast } from "sonner";
+import { useRouter } from "next/navigation";
 
 export default function Register() {
+   const router = useRouter();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -44,6 +46,7 @@ export default function Register() {
         formData.grade
       );
       toast.success("Registration successful!");
+       router.push("/login");
     } catch (err: any) {
       toast.error(err.message || "Registration failed. Please try again.");
     } finally {
@@ -63,7 +66,7 @@ export default function Register() {
           <div className="text-center mb-8">
             <h1 className="text-2xl font-bold">Create an account</h1>
             <p className="text-muted-foreground mt-1">
-              Join FindMyCareer to discover your ideal career path
+              Join Career Path Finder to discover your ideal career path
             </p>
           </div>
 
@@ -79,7 +82,7 @@ export default function Register() {
                 value={formData.name}
                 onChange={handleChange}
                 className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary/50"
-                placeholder="John Doe"
+                placeholder="Full Name"
                 required
               />
             </div>
@@ -95,32 +98,12 @@ export default function Register() {
                 value={formData.email}
                 onChange={handleChange}
                 className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary/50"
-                placeholder="you@example.com"
+                placeholder="Email"
                 required
               />
             </div>
 
-            <div>
-              <label htmlFor="grade" className="block text-sm font-medium mb-1">
-                Grade
-              </label>
-              <select
-                id="grade"
-                name="grade"
-                value={formData.grade}
-                onChange={handleChange}
-                className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary/50"
-                required
-              >
-                <option value="" disabled>
-                  Select your grade
-                </option>
-                <option value="9">Grade 9</option>
-                <option value="10">Grade 10</option>
-                <option value="11">Grade 11</option>
-                <option value="12">Grade 12</option>
-              </select>
-            </div>
+          
 
             <div>
               <label htmlFor="password" className="block text-sm font-medium mb-1">
@@ -180,7 +163,7 @@ export default function Register() {
             <button
               type="submit"
               disabled={isLoading}
-              className={`w-full py-2 px-4 text-white bg-primary rounded-md hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-primary/50 ${
+              className={`w-full py-2 px-4 text-lg font-medium rounded-md transition-colors bg-gray-900 text-white hover:bg-gray-700 dark:bg-gray-100 dark:text-black dark:hover:bg-gray-300 ${
                 isLoading ? "opacity-70 cursor-not-allowed" : ""
               }`}
             >

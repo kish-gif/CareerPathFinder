@@ -15,9 +15,6 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
-// Import theme toggle once we create it
-// import ThemeToggle from "../ThemeToggle";
-
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const pathname = usePathname();
@@ -32,23 +29,24 @@ const Navbar = () => {
     { name: "About", path: "/about" },
   ];
 
-  const getInitials = (name: string) => {
-    return name
+  const getInitials = (name: string) =>
+    name
       .split(" ")
       .map((part) => part[0])
       .join("")
       .toUpperCase();
-  };
 
   return (
     <nav className="bg-background/80 backdrop-blur-md sticky top-0 z-50 w-full border-b">
+      {/* Container */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Flex row */}
         <div className="flex justify-between items-center h-16">
-          {/* Logo and brand */}
+          {/* Logo */}
           <div className="flex-shrink-0 flex items-center">
             <Link href="/" className="flex items-center">
               <span className="text-xl font-bold bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent">
-                FindMyCareer
+                Career Path Finder
               </span>
             </Link>
           </div>
@@ -56,35 +54,57 @@ const Navbar = () => {
           {/* Desktop navigation */}
           <div className="hidden md:flex items-center space-x-4">
             <div className="flex space-x-4">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.path}
-                  href={link.path}
-                  className={`px-3 py-2 rounded-md text-sm font-medium relative ${
-                    isActive(link.path)
-                      ? "text-primary"
-                      : "text-muted-foreground hover:text-primary"
-                  }`}
-                >
-                  {link.name}
-                  {isActive(link.path) && (
-                    <motion.div
-                      className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary"
-                      layoutId="navbar-indicator"
-                    />
-                  )}
-                </Link>
-              ))}
+              {navLinks.map((link) =>
+                link.name === "Career Test" ? (
+                  <Link
+                    key={link.path}
+                    href={isAuthenticated ? "/career-test" : "/register"}
+                    className={`px-3 py-2 rounded-md text-sm font-medium relative ${
+                      isActive(link.path)
+                        ? "text-primary"
+                        : "text-muted-foreground hover:text-primary"
+                    }`}
+                  >
+                    {link.name}
+                    {isActive(link.path) && (
+                      <motion.div
+                        className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary"
+                        layoutId="navbar-indicator"
+                      />
+                    )}
+                  </Link>
+                ) : (
+                  <Link
+                    key={link.path}
+                    href={link.path}
+                    className={`px-3 py-2 rounded-md text-sm font-medium relative ${
+                      isActive(link.path)
+                        ? "text-primary"
+                        : "text-muted-foreground hover:text-primary"
+                    }`}
+                  >
+                    {link.name}
+                    {isActive(link.path) && (
+                      <motion.div
+                        className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary"
+                        layoutId="navbar-indicator"
+                      />
+                    )}
+                  </Link>
+                )
+              )}
             </div>
 
-            {/* Auth buttons or user menu for desktop */}
+            {/* Auth buttons */}
             <div className="flex items-center ml-4 space-x-2">
               {isAuthenticated ? (
                 <DropdownMenu>
                   <DropdownMenuTrigger className="focus:outline-none">
                     <Avatar className="h-8 w-8 cursor-pointer">
                       <AvatarImage src="" alt={user?.name || "User"} />
-                      <AvatarFallback>{user?.name ? getInitials(user.name) : "U"}</AvatarFallback>
+                      <AvatarFallback>
+                        {user?.name ? getInitials(user.name) : "U"}
+                      </AvatarFallback>
                     </Avatar>
                   </DropdownMenuTrigger>
                   <DropdownMenuContent align="end">
@@ -96,12 +116,10 @@ const Navbar = () => {
                       <Link href="/dashboard">Dashboard</Link>
                     </DropdownMenuItem>
                     <DropdownMenuItem asChild>
-                      <Link href="/profile">Profile</Link>
+                      <Link href="/reset-password">Forgot Password</Link>
                     </DropdownMenuItem>
                     <DropdownMenuSeparator />
-                    <DropdownMenuItem onClick={logout}>
-                      Logout
-                    </DropdownMenuItem>
+                    <DropdownMenuItem onClick={logout}>Logout</DropdownMenuItem>
                   </DropdownMenuContent>
                 </DropdownMenu>
               ) : (
@@ -130,52 +148,21 @@ const Navbar = () => {
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className="inline-flex items-center justify-center p-2 rounded-md text-muted-foreground hover:text-primary hover:bg-accent ml-2"
-              aria-expanded="false"
             >
               <span className="sr-only">Open main menu</span>
-              {isMobileMenuOpen ? (
-                <svg
-                  className="block h-6 w-6"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  aria-hidden="true"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M6 18L18 6M6 6l12 12"
-                  />
-                </svg>
-              ) : (
-                <svg
-                  className="block h-6 w-6"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  aria-hidden="true"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M4 6h16M4 12h16M4 18h16"
-                  />
-                </svg>
-              )}
+              {/* icons */}
             </button>
             {isAuthenticated && (
               <Avatar className="h-8 w-8 ml-2 md:hidden">
                 <AvatarImage src="" alt={user?.name || "User"} />
-                <AvatarFallback>{user?.name ? getInitials(user.name) : "U"}</AvatarFallback>
+                <AvatarFallback>
+                  {user?.name ? getInitials(user.name) : "U"}
+                </AvatarFallback>
               </Avatar>
             )}
           </div>
-        </div>
-      </div>
+        </div> {/* closes flex justify-between */}
+      </div> {/* closes max-w container */}
 
       {/* Mobile menu */}
       {isMobileMenuOpen && (
@@ -184,7 +171,13 @@ const Navbar = () => {
             {navLinks.map((link) => (
               <Link
                 key={link.path}
-                href={link.path}
+                href={
+                  link.name === "Career Test"
+                    ? isAuthenticated
+                      ? "/career-test"
+                      : "/register"
+                    : link.path
+                }
                 className={`block px-3 py-2 rounded-md text-base font-medium ${
                   isActive(link.path)
                     ? "text-primary bg-accent"
@@ -222,7 +215,7 @@ const Navbar = () => {
                   </Link>
                   <Link
                     href="/register"
-                    className="block px-3 py-2 rounded-md text-base font-medium text-primary hover:bg-accent"
+                    className=" text-white dark:text-black block px-3 py-2 rounded-md text-base font-medium text-primary hover:bg-accent"
                   >
                     Sign up
                   </Link>
@@ -236,4 +229,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar; 
+export default Navbar;

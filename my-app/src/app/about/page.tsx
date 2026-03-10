@@ -1,13 +1,14 @@
 import Link from "next/link";
+import StartCareerTestButton from "@/components/StartCareerTestButton";
 
 export default function About() {
   return (
     <div className="py-12">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold tracking-tight mb-4">About FindMyCareer</h1>
+          <h1 className="text-4xl font-bold tracking-tight mb-4">About Career Path Finder</h1>
           <p className="text-xl text-muted-foreground">
-            Helping high school students discover their ideal career paths
+            Helping students and young professionals discover their ideal Career Paths
           </p>
         </div>
 
@@ -15,10 +16,10 @@ export default function About() {
           <section>
             <h2 className="text-2xl font-bold mb-4">Our Mission</h2>
             <p className="text-lg text-muted-foreground mb-4">
-              FindMyCareer is dedicated to helping Grade 9-12 students identify suitable career paths through a comprehensive psychological and scenario-based assessment. We believe that every student deserves guidance in finding a career that aligns with their strengths, interests, and values.
+            Career Path Finder is dedicated to guiding students and young professionals in discovering meaningful career paths through a comprehensive, data‑driven assessment. We believe that every learner deserves clear, accessible guidance in choosing a future that aligns with their skills, interests, and values. By combining structured questions, AI‑powered analysis, and an engaging interface, our mission is to empower users to make confident decisions about their academic and professional journeys.
             </p>
             <p className="text-lg text-muted-foreground">
-              Our platform not only suggests career options but also provides valuable information about colleges, entrance exams, eligibility criteria, and application processes, making the journey from high school to a fulfilling career smoother and more informed.
+              Our platform not only suggests career options but also provides valuable information about careeer details, roles, salary range, and growth paths, making the journey to a fulfilling career smoother and more informed.
             </p>
           </section>
 
@@ -31,7 +32,7 @@ export default function About() {
                 </div>
                 <h3 className="text-xl font-semibold mb-2">Take the Test</h3>
                 <p className="text-muted-foreground">
-                  Complete our 15-question psychological and scenario-based test designed to assess your strengths, interests, and working style.
+                  Complete our 20 skills and scenario-based question designed to assess your strengths, interests, and working style.
                 </p>
               </div>
               <div className="bg-background border rounded-lg p-6">
@@ -40,7 +41,7 @@ export default function About() {
                 </div>
                 <h3 className="text-xl font-semibold mb-2">Get Recommendations</h3>
                 <p className="text-muted-foreground">
-                  Our algorithm analyzes your responses using our comprehensive dataset to suggest career paths that align with your profile.
+                Our AI analyzes each response using advanced algorithms and a structured dataset to generate career path suggestions that align with the user’s unique profile.
                 </p>
               </div>
               <div className="bg-background border rounded-lg p-6">
@@ -49,29 +50,26 @@ export default function About() {
                 </div>
                 <h3 className="text-xl font-semibold mb-2">Explore Options</h3>
                 <p className="text-muted-foreground">
-                  Discover detailed information about each recommended career, including top colleges, entrance exams, and application processes.
+                  Discover detailed information about each recommended career, including roles, salary range, and growth paths.
                 </p>
               </div>
             </div>
           </section>
 
           <section>
-            <h2 className="text-2xl font-bold mb-4">Our Data</h2>
+            <h2 className="text-2xl font-bold mb-4">AI‑Driven Career Insights</h2>
             <p className="text-lg text-muted-foreground mb-4">
-              FindMyCareer uses two primary datasets to provide accurate and helpful recommendations:
-            </p>
+Personalized guidance powered by data and hybrid intelligence, helping you discover career paths that truly fit your strengths and interests.            </p>
             <div className="space-y-4">
               <div className="bg-background border rounded-lg p-6">
-                <h3 className="text-xl font-semibold mb-2">Career Recommendation Dataset</h3>
+                <h3 className="text-xl font-semibold mb-2">How Our AI Works</h3>
                 <p className="text-muted-foreground">
-                  This dataset evaluates test responses to determine suitable career paths based on psychological profiles and scenario responses.
-                </p>
+Our AI analyzes your responses to skills and scenario‑based questions, evaluates them against key traits, and uses a hybrid recommendation engine to suggest career paths that truly fit you. By combining machine learning with rule‑based logic, it delivers accurate, personalized, and easy‑to‑understand results.                </p>
               </div>
               <div className="bg-background border rounded-lg p-6">
-                <h3 className="text-xl font-semibold mb-2">Master Career Dataset</h3>
+                <h3 className="text-xl font-semibold mb-2">Smarter Career Recommendations</h3>
                 <p className="text-muted-foreground">
-                  This comprehensive dataset maps career paths to colleges, locations, rankings, eligibility criteria, entrance exams, and application processes.
-                </p>
+Career Path Finder connects recommended careers to real academic and professional pathways, presenting results through clear charts and visuals for easy understanding.                 </p>
               </div>
             </div>
           </section>
@@ -81,12 +79,7 @@ export default function About() {
             <p className="text-lg text-muted-foreground mb-6">
               Take our career test today and start your journey toward a fulfilling career that matches your unique profile.
             </p>
-            <Link
-              href="/career-test"
-              className="px-6 py-3 text-lg font-medium text-white bg-primary rounded-md hover:bg-primary/90 inline-block"
-            >
-              Start Career Test
-            </Link>
+           <StartCareerTestButton label="Start Career Test" />
           </section>
         </div>
       </div>

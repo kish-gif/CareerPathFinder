@@ -36,9 +36,9 @@ export default function Login() {
           className="bg-background border rounded-xl shadow-sm p-6 md:p-8"
         >
           <div className="text-center mb-8">
-            <h1 className="text-2xl font-bold">Welcome back</h1>
+            <h1 className="text-2xl font-bold">Welcome Back</h1>
             <p className="text-muted-foreground mt-1">
-              Log in to your FindMyCareer account
+              Log in to your Career Path Finder account
             </p>
           </div>
 
@@ -53,7 +53,7 @@ export default function Login() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary/50"
-                placeholder="you@example.com"
+                placeholder="Email"
                 required
               />
             </div>
@@ -64,7 +64,7 @@ export default function Login() {
                   Password
                 </label>
                 <Link
-                  href="/forgot-password"
+                  href="/reset-password"
                   className="text-sm text-primary hover:underline"
                 >
                   Forgot password?
@@ -95,7 +95,7 @@ export default function Login() {
             <button
               type="submit"
               disabled={isLoading}
-              className={`w-full py-2 px-4 text-white bg-primary rounded-md hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-primary/50 ${
+              className={`w-full py-2 px-4 text-lg font-medium rounded-md transition-colors bg-gray-900 text-white hover:bg-gray-700 dark:bg-gray-100 dark:text-black dark:hover:bg-gray-300 ${
                 isLoading ? "opacity-70 cursor-not-allowed" : ""
               }`}
             >

@@ -8,7 +8,7 @@ import { AppProvider } from "@/components/providers/AppProvider";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "FindMyCareer - Career Guidance for Students",
+  title: "Career Path Finder - Career Guidance for Students",
   description: "Find your ideal career path with our psychological test and comprehensive guidance for Grade 9-12 students.",
 };
 
@@ -54,7 +54,7 @@ export default function RootLayout({
             <footer className="py-6 border-t">
               <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <p className="text-center text-sm text-muted-foreground">
-                  © {new Date().getFullYear()} FindMyCareer. All rights reserved.
+                  © {new Date().getFullYear()} Career Path Finder.
                 </p>
               </div>
             </footer>

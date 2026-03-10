@@ -19,6 +19,7 @@ interface AuthContextType {
   login: (email: string, password: string) => Promise<void>;
   register: (name: string, email: string, password: string, grade: string) => Promise<void>;
   logout: () => void;
+  resetPassword: (oldPassword: string, newPassword: string) => Promise<void>;
 }
 
 const AuthContext = createContext<AuthContextType | null>(null);
@@ -66,7 +67,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
       setUser(result.user);
       setToken(result.token);
       localStorage.setItem('token', result.token);
-      router.push('/dashboard');
+      router.push('/career-test');
     } catch (error) {
       console.error('Login error:', error);
       throw error;
@@ -76,21 +77,32 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   };
 
   // Register function
-  const register = async (name: string, email: string, password: string, grade: string) => {
-    setIsLoading(true);
-    try {
-      const result = await authAPI.register({ name, email, password, grade });
-      setUser(result.user);
-      setToken(result.token);
-      localStorage.setItem('token', result.token);
-      router.push('/dashboard');
-    } catch (error) {
-      console.error('Registration error:', error);
-      throw error;
-    } finally {
-      setIsLoading(false);
-    }
-  };
+const register = async (name: string, email: string, password: string, grade: string) => {
+  setIsLoading(true);
+  try {
+    await authAPI.register({ name, email, password, grade });
+  
+  } catch (error) {
+    console.error('Registration error:', error);
+    throw error;
+  } finally {
+    setIsLoading(false);
+  }
+};
+
+// Reset password function
+const resetPassword = async (oldPassword: string, newPassword: string) => {
+  setIsLoading(true);
+  try {
+    await authAPI.resetPassword({ oldPassword, newPassword }); 
+    // 👆 implement this in your backend/api
+  } catch (error) {
+    console.error("Reset password error:", error);
+    throw error;
+  } finally {
+    setIsLoading(false);
+  }
+};
 
   // Logout function
   const logout = () => {
@@ -110,6 +122,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
         login,
         register,
         logout,
+        resetPassword,
       }}
     >
       {children}
