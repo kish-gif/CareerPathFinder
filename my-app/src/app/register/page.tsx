@@ -103,6 +103,27 @@ export default function Register() {
               />
             </div>
 
+            <div>
+              <label htmlFor="grade" className="block text-sm font-medium mb-1">
+                Grade
+              </label>
+              <select
+                id="grade"
+                name="grade"
+                value={formData.grade}
+                onChange={handleChange}
+                className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary/50"
+                required
+              >
+                <option value="" disabled>
+                  Select your grade
+                </option>
+                <option value="9">Grade 9</option>
+                <option value="10">Grade 10</option>
+                <option value="11">Grade 11</option>
+                <option value="12">Grade 12</option>
+              </select>
+            </div>
           
 
             <div>
