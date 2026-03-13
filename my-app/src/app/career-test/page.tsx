@@ -4,7 +4,7 @@ export default function CareerTestPage() {
   return (
     <div style={{ width: "100%", height: "100vh" }}>
       <iframe
-        src="https://career-test.streamlit.app/"
+        src="https://careerpathai-0989.onrender.com/"
         style={{
           width: "100%",
           height: "100%",
