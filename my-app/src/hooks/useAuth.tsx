@@ -19,7 +19,6 @@ interface AuthContextType {
   login: (email: string, password: string) => Promise<void>;
   register: (name: string, email: string, password: string, grade: string) => Promise<void>;
   logout: () => void;
-  resetPassword: (oldPassword: string, newPassword: string) => Promise<void>;
 }
 
 const AuthContext = createContext<AuthContextType | null>(null);
@@ -90,20 +89,6 @@ const register = async (name: string, email: string, password: string, grade: st
   }
 };
 
-// Reset password function
-const resetPassword = async (oldPassword: string, newPassword: string) => {
-  setIsLoading(true);
-  try {
-    await authAPI.resetPassword({ oldPassword, newPassword }); 
-    // 👆 implement this in your backend/api
-  } catch (error) {
-    console.error("Reset password error:", error);
-    throw error;
-  } finally {
-    setIsLoading(false);
-  }
-};
-
   // Logout function
   const logout = () => {
     setUser(null);
@@ -122,7 +107,6 @@ const resetPassword = async (oldPassword: string, newPassword: string) => {
         login,
         register,
         logout,
-        resetPassword,
       }}
     >
       {children}
