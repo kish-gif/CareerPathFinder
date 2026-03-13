@@ -1,11 +1,16 @@
 "use client";
 
-export default function CareerTest() {
+export default function CareerTestPage() {
   return (
     <div style={{ width: "100%", height: "100vh" }}>
       <iframe
         src="https://career-test.streamlit.app/"
-        style={{ width: "100%", height: "100%", border: "none" }}
+        style={{
+          width: "100%",
+          height: "100%",
+          border: "none",
+        }}
+        allow="clipboard-read; clipboard-write"
         title="Career Test"
       />
     </div>
