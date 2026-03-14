@@ -31,7 +31,7 @@ if (!fs.existsSync(uploadsDir)) {
 
 // Database connection
 mongoose
-  .connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/findmycareer')
+  .connect(process.env.MONGO_URI || 'mongodb://localhost:27017/findmycareer')
   .then(() => {
     console.log('Connected to MongoDB');
   })
