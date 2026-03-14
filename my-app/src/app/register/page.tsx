@@ -116,12 +116,11 @@ export default function Register() {
                 required
               >
                 <option value="" disabled>
-                  Select your grade
+                  Select your Education Level
                 </option>
-                <option value="9">Grade 9</option>
-                <option value="10">Grade 10</option>
-                <option value="11">Grade 11</option>
-                <option value="12">Grade 12</option>
+                <option value="9">Junior High School</option>
+                <option value="10">Senior High School</option>
+                <option value="11">College Level</option>
               </select>
             </div>
           
